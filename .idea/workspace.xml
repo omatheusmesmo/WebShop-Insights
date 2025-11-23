@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="feat: scripts for create tables for webshop">
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="refactor: move files to webshop directory">
+      <change afterPath="$PROJECT_DIR$/webshop_analytics/financial_summary.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,21 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "omatheusmesmo"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;omatheusmesmo&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/omatheusmesmo/WebShop-Insights.git",
-    "accountId": "7de4e7f4-442d-47ed-a154-3cec94dc6b0f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/omatheusmesmo/WebShop-Insights.git&quot;,
+    &quot;accountId&quot;: &quot;7de4e7f4-442d-47ed-a154-3cec94dc6b0f&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="35qil2Z0syg8tLTLT7bJZtDeSxn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -50,14 +52,19 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/media/omatheusmesmo/FileShare/projects/python/WebShop",
+    "last_opened_file_path": "/media/omatheusmesmo/FileShare/projects/python/WebShop/webshop_analytics",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webshop_analytics" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/webshop_sql" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webshop" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -99,20 +106,29 @@
       <option name="project" value="LOCAL" />
       <updated>1763849766038</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor: move files to webshop directory">
+      <option name="closed" value="true" />
+      <created>1763909288389</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763909288389</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="conf: project setup" />
     <MESSAGE value="feat: Script for populating a database with random data" />
     <MESSAGE value="feat: scripts for create tables for webshop" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: scripts for create tables for webshop" />
+    <MESSAGE value="refactor: move files to webshop directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: move files to webshop directory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/insert_script.py</url>
+          <url>file://$PROJECT_DIR$/webshop/insert_script.py</url>
           <line>201</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
