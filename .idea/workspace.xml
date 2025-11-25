@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="refactor: move files to webshop directory">
-      <change afterPath="$PROJECT_DIR$/webshop_analytics/financial_summary.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" afterDir="false" />
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="refactor: change in the type of period stored">
+      <change afterPath="$PROJECT_DIR$/webshop_analytics/order_subtotals.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,18 +43,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.insert_script.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/media/omatheusmesmo/FileShare/projects/python/WebShop/webshop_analytics",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.db_connections.executor&quot;: &quot;Run&quot;,
+    &quot;Python.insert_script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.order_subtotals.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pipeline_financial_metrics.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/omatheusmesmo/FileShare/projects/python/WebShop/webshop_analytics&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/webshop_analytics" />
@@ -114,7 +116,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763909288389</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: script for create metrics tables">
+      <option name="closed" value="true" />
+      <created>1763909529397</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763909529397</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor: change in the type of period stored">
+      <option name="closed" value="true" />
+      <created>1764087111171</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1764087111171</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -122,17 +140,8 @@
     <MESSAGE value="feat: Script for populating a database with random data" />
     <MESSAGE value="feat: scripts for create tables for webshop" />
     <MESSAGE value="refactor: move files to webshop directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: move files to webshop directory" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/webshop/insert_script.py</url>
-          <line>201</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="feat: script for create metrics tables" />
+    <MESSAGE value="refactor: change in the type of period stored" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: change in the type of period stored" />
   </component>
 </project>
