@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="feat: pipeline to calculate financial metrics">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" afterDir="false" />
-    </list>
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="chore: initial setup" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +169,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764087507943</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: sql script of product performance table">
+      <option name="closed" value="true" />
+      <created>1764275225605</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1764275225605</updated>
+    </task>
+    <task id="LOCAL-00013" summary="chore: initial setup">
+      <option name="closed" value="true" />
+      <created>1764275436660</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1764275436660</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -187,6 +200,8 @@
     <MESSAGE value="feat: centralize db connections and engines" />
     <MESSAGE value="feat: pipeline to calculate order subtotals" />
     <MESSAGE value="feat: pipeline to calculate financial metrics" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: pipeline to calculate financial metrics" />
+    <MESSAGE value="feat: sql script of product performance table" />
+    <MESSAGE value="chore: initial setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: initial setup" />
   </component>
 </project>
