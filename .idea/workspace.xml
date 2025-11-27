@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="refactor: change in the type of period stored">
-      <change afterPath="$PROJECT_DIR$/webshop_analytics/order_subtotals.sql" afterDir="false" />
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="feat: pipeline to calculate financial metrics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +132,47 @@
       <option name="project" value="LOCAL" />
       <updated>1764087111171</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: table to store order subtotals">
+      <option name="closed" value="true" />
+      <created>1764087255239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764087255239</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: fdw setup to simplify data aggregation">
+      <option name="closed" value="true" />
+      <created>1764087366398</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1764087366398</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: centralize db connections and engines">
+      <option name="closed" value="true" />
+      <created>1764087437236</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1764087437236</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: pipeline to calculate order subtotals">
+      <option name="closed" value="true" />
+      <created>1764087485972</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1764087485972</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: pipeline to calculate financial metrics">
+      <option name="closed" value="true" />
+      <created>1764087507943</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1764087507943</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -142,6 +182,11 @@
     <MESSAGE value="refactor: move files to webshop directory" />
     <MESSAGE value="feat: script for create metrics tables" />
     <MESSAGE value="refactor: change in the type of period stored" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: change in the type of period stored" />
+    <MESSAGE value="feat: table to store order subtotals" />
+    <MESSAGE value="feat: fdw setup to simplify data aggregation" />
+    <MESSAGE value="feat: centralize db connections and engines" />
+    <MESSAGE value="feat: pipeline to calculate order subtotals" />
+    <MESSAGE value="feat: pipeline to calculate financial metrics" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: pipeline to calculate financial metrics" />
   </component>
 </project>
