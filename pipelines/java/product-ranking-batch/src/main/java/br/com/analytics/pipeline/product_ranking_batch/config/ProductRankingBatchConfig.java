@@ -4,6 +4,8 @@ import br.com.analytics.pipeline.product_ranking_batch.model.OrderItem;
 import br.com.analytics.pipeline.product_ranking_batch.model.ProductDailySummary;
 import br.com.analytics.pipeline.product_ranking_batch.processor.ProductAggregationProcessor;
 import br.com.analytics.pipeline.product_ranking_batch.reader.OrderItemRowMapper;
+import br.com.analytics.pipeline.product_ranking_batch.tasklet.RankingCalculationTasklet;
+import br.com.analytics.pipeline.product_ranking_batch.writer.ProductSummaryWriter;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -68,16 +70,17 @@ public class ProductRankingBatchConfig {
     }
 
     @Bean
-    public ItemWriter<ProductDailySummary> itemWriter(){
-        return items ->{
-            System.out.println("INFO: Writing "+ items.size() + " product daily summaries ...");
-        };
+    public ItemWriter<ProductDailySummary> aggregationWriter(
+            ProductAggregationProcessor processor,
+            @Qualifier("batchDataSource") DataSource batchDataSource
+    ){
+        return new ProductSummaryWriter(processor, batchDataSource);
     }
 
     @Bean
     public Step aggregationStep(
             ItemReader<OrderItem> reader,
-            ItemProcessor<OrderItem, ProductDailySummary> processor,
+            ProductAggregationProcessor processor,
             ItemWriter<ProductDailySummary> writer
     ){
         return new StepBuilder("aggregationStep", jobRepository)
@@ -89,10 +92,25 @@ public class ProductRankingBatchConfig {
     }
 
     @Bean
-    public Job productRankingDailyJob(Step aggregationStep){
+    public RankingCalculationTasklet rankingCalculationTasklet(
+            @Qualifier("batchDataSource") DataSource batchDataSource
+    ){
+        return new RankingCalculationTasklet(batchDataSource);
+    }
+
+    @Bean
+    public Step rankingStep(RankingCalculationTasklet tasklet){
+        return new StepBuilder("rankingStep", jobRepository)
+                .tasklet(tasklet, transactionManager)
+                .build();
+    }
+
+    @Bean
+    public Job productRankingDailyJob(Step aggregationStep, Step rankingStep){
         return new JobBuilder("productRankingDailyJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(aggregationStep)
+                .next(rankingStep)
                 .build();
     }
 
