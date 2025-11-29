@@ -1,0 +1,94 @@
+version: '3.8'
+
+x-airflow-common:
+  &airflow-common
+  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:latest}
+  environment:
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+
+    APP_DB_HOST: app-postgres
+    ANALYTICS_DB_HOST: analytics-db
+    APP_DB_USER: ${WEB_SHOP_DB_USER}
+    APP_DB_PASSWORD: ${WEB_SHOP_DB_PASSWORD}
+    APP_DB_NAME: web_shop
+    ANALYTICS_DB_USER: ${ANALYTICS_DB_USER}
+    ANALYTICS_DB_PASSWORD: ${ANALYTICS_DB_PASSWORD}
+    ANALYTICS_DB_NAME: web_shop_analytics
+
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+  depends_on:
+    - airflow-postgres
+    - app-postgres
+    - analytics-db
+    - ranking-batch
+
+services:
+  airflow-postgres:
+    image: postgres:latest
+    container_name: airflow-db
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - ./airflow_db_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+
+  app-postgres:
+    image: postgres:latest
+    container_name: app-postgres
+    environment:
+      POSTGRES_DB: web_shop
+      POSTGRES_USER: ${WEB_SHOP_DB_USER}
+      POSTGRES_PASSWORD: ${WEB_SHOP_DB_PASSWORD}
+    volumes:
+      - app_data:/var/lib/postgresql/data
+      - ./webshop/webshop_sql:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  analytics-db:
+    image: postgres:latest
+    container_name: analytics-db
+    environment:
+      POSTGRES_DB: web_shop_analytics
+      POSTGRES_USER: ${ANALYTICS_DB_USER}
+      POSTGRES_PASSWORD: ${ANALYTICS_DB_PASSWORD}
+    volumes:
+      - analytics_data:/var/lib/postgresql/data
+      - ./webshop_analytics:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
+
+  ranking-batch:
+    build:
+      context: .
+      dockerfile: ./pipelines/java/product-ranking-batch/Dockerfile
+    container_name: ranking-batch-runner
+    #volumes:
+      #- ./pipelines/java/product-ranking-batch/target:/app/target
+    command: ["tail", "-f", "/dev/null"]
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    user: "${AIRFLOW_UID}:0"
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    user: "${AIRFLOW_UID}:0"
+
+volumes:
+  airflow_db_data:
+  app_data:
+  analytics_data:
