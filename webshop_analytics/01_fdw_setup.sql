@@ -28,5 +28,3 @@ OPTIONS (
     schema_name 'public',
     table_name 'orders'
 );
-
-select * from orders_foreign;

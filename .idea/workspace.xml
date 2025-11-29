@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="chore: initial setup">
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/processor/ProductAggregationProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/processor/ProductAggregationProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/tasklet/RankingCalculationTasklet.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/tasklet/RankingCalculationTasklet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/customers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/01_customers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/inventory.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/03_inventory.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/order_details.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/05_order_details.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/orders.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/04_orders.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/02_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop_analytics/fdw_setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/01_fdw_setup.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop_analytics/financial_summary.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/04_financial_summary.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop_analytics/order_subtotals.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/05_order_subtotals.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/06_product_performance.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -46,21 +53,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.db_connections.executor&quot;: &quot;Run&quot;,
-    &quot;Python.insert_script.executor&quot;: &quot;Run&quot;,
-    &quot;Python.order_subtotals.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pipeline_financial_metrics.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/omatheusmesmo/FileShare/projects/python/WebShop/webshop_analytics&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.product-ranking-batch/Dockerfile.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.db_connections.executor": "Run",
+    "Python.insert_script.executor": "Run",
+    "Python.order_subtotals.executor": "Run",
+    "Python.pipeline_financial_metrics.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/media/omatheusmesmo/FileShare/projects/python/WebShop/webshop_analytics",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/webshop_analytics" />
@@ -71,6 +79,29 @@
       <recent name="$PROJECT_DIR$/webshop" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="product-ranking-batch/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="pipelines/java/product-ranking-batch/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.product-ranking-batch/Dockerfile" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
