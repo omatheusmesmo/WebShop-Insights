@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="chore: initial setup" />
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="chore: initial setup">
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/processor/ProductAggregationProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/processor/ProductAggregationProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/tasklet/RankingCalculationTasklet.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/tasklet/RankingCalculationTasklet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
