@@ -7,6 +7,7 @@ import br.com.analytics.pipeline.product_ranking_batch.reader.OrderItemRowMapper
 import br.com.analytics.pipeline.product_ranking_batch.tasklet.RankingCalculationTasklet;
 import br.com.analytics.pipeline.product_ranking_batch.writer.ProductSummaryWriter;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.job.parameters.RunIdIncrementer;
@@ -20,6 +21,7 @@ import org.springframework.batch.infrastructure.item.database.builder.JdbcCursor
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -32,9 +34,33 @@ public class ProductRankingBatchConfig {
     private final JobRepository jobRepository;
     private final PlatformTransactionManager transactionManager;
 
-    public ProductRankingBatchConfig(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+    public ProductRankingBatchConfig(JobRepository jobRepository,
+                                     @Qualifier("batchTransactionManager") PlatformTransactionManager transactionManager) {
         this.jobRepository = jobRepository;
         this.transactionManager = transactionManager;
+    }
+
+    @Bean
+    public LocalDate highWaterMarkDate(@Qualifier("batchDataSource") DataSource batchDataSource) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(batchDataSource);
+
+        final String SQL_MAX_DATE = "SELECT MAX(aggregation_day) FROM product_performance";
+
+        try {
+            LocalDate maxDate = jdbcTemplate.queryForObject(SQL_MAX_DATE, LocalDate.class);
+
+            if (maxDate == null) {
+                System.out.println("INFO: High Water Mark not found. Starting from 1900-01-01.");
+                return LocalDate.parse("1900-01-01");
+            }
+
+            System.out.println("INFO: High Water Mark found: Starting from " + maxDate.plusDays(1));
+            return maxDate.plusDays(1);
+
+        } catch (Exception e) {
+            System.err.println("ERROR: Failed to retrieve High Water Mark. Using default start date.");
+            return LocalDate.parse("1900-01-01");
+        }
     }
 
     private static final String ORDER_ITEMS_QUERY =
@@ -49,18 +75,18 @@ public class ProductRankingBatchConfig {
                     "ORDER BY orderDate, orderId";
 
     @Bean
+    //@StepScope
     public ItemReader<OrderItem> itemReader(
-            @Qualifier("appDataSource") DataSource appDataSource
-            ){
-        LocalDate latestDate = LocalDate.parse("1900-01-01");
-
+            @Qualifier("appDataSource") DataSource appDataSource,
+            LocalDate highWaterMarkDate
+    ){
         return new JdbcCursorItemReaderBuilder<OrderItem>()
                 .name("orderItemReader")
                 .dataSource(appDataSource)
                 .sql(ORDER_ITEMS_QUERY)
                 .rowMapper(new OrderItemRowMapper())
                 .fetchSize(1000)
-                .queryArguments(latestDate)
+                .queryArguments(highWaterMarkDate)
                 .build();
     }
 
