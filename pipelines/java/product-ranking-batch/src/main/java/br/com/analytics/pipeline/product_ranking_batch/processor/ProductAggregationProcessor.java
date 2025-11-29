@@ -3,10 +3,9 @@ package br.com.analytics.pipeline.product_ranking_batch.processor;
 import br.com.analytics.pipeline.product_ranking_batch.model.AggregationKey;
 import br.com.analytics.pipeline.product_ranking_batch.model.OrderItem;
 import br.com.analytics.pipeline.product_ranking_batch.model.ProductDailySummary;
-import org.jspecify.annotations.Nullable;
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.annotation.AfterStep;
-import org.springframework.batch.core.repository.persistence.StepExecution;
-import org.springframework.batch.infrastructure.item.Chunk;
+import org.springframework.batch.core.step.StepExecution;
 import org.springframework.batch.infrastructure.item.ItemProcessor;
 
 import java.math.BigDecimal;
@@ -20,8 +19,6 @@ public class ProductAggregationProcessor implements ItemProcessor<OrderItem, Pro
 
     private final Map<AggregationKey, ProductDailySummary> aggregatedData = new HashMap<>();
     private final Set<Long> processedOrdersForShipping = new HashSet<>();
-
-    private Chunk<ProductDailySummary> finalAggregates;
 
     public Map<AggregationKey, ProductDailySummary> getAggregatedData() {
         return aggregatedData;
@@ -88,7 +85,12 @@ public class ProductAggregationProcessor implements ItemProcessor<OrderItem, Pro
     }
 
     @AfterStep
-    public void afterStep(StepExecution stepExecution) {
+    public ExitStatus afterStep(StepExecution stepExecution) {
         System.out.println("INFO: In-memory aggregation complete. " + aggregatedData.size() + " summaries created.");
+
+        this.aggregatedData.clear();
+        this.processedOrdersForShipping.clear();
+
+        return stepExecution.getExitStatus();
     }
 }
