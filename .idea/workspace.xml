@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="fix: increase phone number field length in customers table">
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/WebShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WebShop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/python/order_subtotals.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/python/order_subtotals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/python/pipeline_financial_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/python/financial_metrics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop/insert_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/python/insert_webshop.py" afterDir="false" />
-    </list>
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -269,7 +252,87 @@
       <option name="project" value="LOCAL" />
       <updated>1767474918715</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix: update workspace configuration and adjust recent tasks">
+      <option name="closed" value="true" />
+      <created>1767475949347</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1767475949347</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix: update Python SDK version to 3.13 in project configuration">
+      <option name="closed" value="true" />
+      <created>1767475959927</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1767475959927</updated>
+    </task>
+    <task id="LOCAL-00018" summary="docs: enhance README with project overview, quickstart guide, and developer notes">
+      <option name="closed" value="true" />
+      <created>1767475975459</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1767475975459</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: update queryArguments to use PreparedStatementSetter for improved SQL execution">
+      <option name="closed" value="true" />
+      <created>1767475983821</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1767475983821</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix: update database connection properties for analytics and application environments">
+      <option name="closed" value="true" />
+      <created>1767475993250</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1767475993250</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fix: update .gitignore to include build/sync state markers and config directory; upgrade Python SDK version to 3.13 in project configuration">
+      <option name="closed" value="true" />
+      <created>1767476006968</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476006968</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fix: add COPY command to Dockerfile to include built JAR in final image">
+      <option name="closed" value="true" />
+      <created>1767476012944</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476012944</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix: rename pipeline_financial_metrics.py to financial_metrics.py and update import statement">
+      <option name="closed" value="true" />
+      <created>1767476022805</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476022805</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix: rename insert_script.py to insert_webshop.py and enhance logging and error handling">
+      <option name="closed" value="true" />
+      <created>1767476032838</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476032838</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation">
+      <option name="closed" value="true" />
+      <created>1767476041580</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476041580</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,7 +362,17 @@
     <MESSAGE value="chore: initial setup" />
     <MESSAGE value="fix: update foreign data wrapper setup and adjust sales velocity score precision" />
     <MESSAGE value="fix: increase phone number field length in customers table" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: increase phone number field length in customers table" />
+    <MESSAGE value="fix: update workspace configuration and adjust recent tasks" />
+    <MESSAGE value="fix: update Python SDK version to 3.13 in project configuration" />
+    <MESSAGE value="docs: enhance README with project overview, quickstart guide, and developer notes" />
+    <MESSAGE value="fix: update queryArguments to use PreparedStatementSetter for improved SQL execution" />
+    <MESSAGE value="fix: update database connection properties for analytics and application environments" />
+    <MESSAGE value="fix: update .gitignore to include build/sync state markers and config directory; upgrade Python SDK version to 3.13 in project configuration" />
+    <MESSAGE value="fix: add COPY command to Dockerfile to include built JAR in final image" />
+    <MESSAGE value="fix: rename pipeline_financial_metrics.py to financial_metrics.py and update import statement" />
+    <MESSAGE value="fix: rename insert_script.py to insert_webshop.py and enhance logging and error handling" />
+    <MESSAGE value="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
