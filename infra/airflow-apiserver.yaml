@@ -1,0 +1,126 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: airflow-apiserver
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: airflow-apiserver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airflow-apiserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airflow-apiserver
+  template:
+    metadata:
+      labels:
+        app: airflow-apiserver
+    spec:
+      securityContext:
+        fsGroup: 0
+      initContainers:
+      - name: airflow-init
+        image: webshop-airflow-custom:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - "/bin/bash"
+        - "-c"
+        - |
+          mkdir -p /opt/airflow/{logs,dags,plugins,config}
+        volumeMounts:
+        - name: airflow-dags
+          mountPath: /opt/airflow/dags
+        - name: airflow-logs
+          mountPath: /opt/airflow/logs
+        - name: airflow-config-pvc
+          mountPath: /opt/airflow/config
+        - name: airflow-plugins
+          mountPath: /opt/airflow/plugins
+      containers:
+      - name: airflow-apiserver
+        image: webshop-airflow-custom:latest
+        imagePullPolicy: IfNotPresent
+        command: ["airflow", "webserver"]
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: airflow-config
+        env:
+        - name: WEB_SHOP_DB_HOST
+          value: "app-postgres"
+        - name: WEB_SHOP_DB_NAME
+          value: "web_shop"
+        - name: WEB_SHOP_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: user
+        - name: WEB_SHOP_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: password
+        - name: ANALYTICS_DB_HOST
+          value: "analytics-db"
+        - name: ANALYTICS_DB_NAME
+          value: "web_shop_analytics"
+        - name: ANALYTICS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: user
+        - name: ANALYTICS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: password
+
+        volumeMounts:
+        - name: airflow-dags
+          mountPath: /opt/airflow/dags
+        - name: airflow-logs
+          mountPath: /opt/airflow/logs
+        - name: airflow-config-pvc
+          mountPath: /opt/airflow/config
+        - name: airflow-plugins
+          mountPath: /opt/airflow/plugins
+
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1.5Gi"
+            cpu: "1000m"
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+      volumes:
+      - name: airflow-dags
+        persistentVolumeClaim:
+          claimName: airflow-dags
+      - name: airflow-logs
+        persistentVolumeClaim:
+          claimName: airflow-logs
+      - name: airflow-config-pvc
+        persistentVolumeClaim:
+          claimName: airflow-config-pvc
+      - name: airflow-plugins
+        persistentVolumeClaim:
+          claimName: airflow-plugins
+

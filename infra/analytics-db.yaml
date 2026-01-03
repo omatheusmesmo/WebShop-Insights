@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: analytics-db
+spec:
+  ports:
+  - port: 5432
+  selector:
+    app: analytics-db
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: analytics-db
+spec:
+  serviceName: "analytics-db"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analytics-db
+  template:
+    metadata:
+      labels:
+        app: analytics-db
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:16
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: "web_shop_analytics"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: password
+        - name: WEB_SHOP_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: user
+        - name: WEB_SHOP_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: password
+        volumeMounts:
+        - name: analytics-data
+          mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "768Mi"
+            cpu: "500m"
+      volumes: # Add volume for FDW scripts
+      - name: fdw-scripts-volume
+        configMap: # Use a configMap to store the FDW scripts
+          name: analytics-fdw-scripts # This configMap needs to be created
+
+
+  volumeClaimTemplates:
+  - metadata:
+      name: analytics-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: airflow-db-init-job
+spec:
+  template:
+    spec:
+      securityContext:
+        fsGroup: 0
+      restartPolicy: OnFailure
+      # 1. INIT CONTAINER: Aguarda o banco de dados do Airflow
+      initContainers:
+      - name: wait-for-postgres
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ['sh', '-c', 'until nc -z postgres 5432; do echo waiting for db; sleep 5; done;']
+      # 2. CONTAINER PRINCIPAL: Roda as migrações e cria o admin
+      containers:
+      - name: airflow-migrate-user
+        image: webshop-airflow-custom:latest
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          # 💡 Migração do Banco de Dados
+          airflow db migrate &&
+          # 💡 Criação do Usuário Admin
+          airflow users create \
+              --username admin \
+              --firstname Airflow \
+              --lastname Admin \
+              --role Admin \
+              --email admin@example.com \
+              --password admin
+        envFrom:
+        - configMapRef:
+            name: airflow-config
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "300m"
+        volumeMounts:
+        - name: airflow-config-pvc
+          mountPath: /opt/airflow/config
+      volumes: # Necessário montar os volumes do Airflow para o initContainer
+        - name: airflow-config-pvc
+          persistentVolumeClaim:
+            claimName: airflow-config-pvc

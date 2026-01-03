@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ranking-batch-config # Referenciado na sua futura DAG
+data:
+  DB_HOST_APP: app-postgres   # <-- Nome do Service em app-postgres.yaml
+  DB_HOST_ANALYTICS: analytics-db # <-- Nome do Service em analytics-db.yaml
+  DB_PORT: "5432"

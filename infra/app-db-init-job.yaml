@@ -1,0 +1,60 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-db-init-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: app-db-init-job
+    spec:
+      restartPolicy: OnFailure
+      initContainers:
+      - name: wait-for-app-db
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ['sh', '-c', 'until nc -z app-postgres 5432; do echo waiting for app-postgres; sleep 5; done;']
+      containers:
+      - name: db-init-runner
+        image: postgres:16 # Use a postgres client image
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          echo "app-postgres is ready. Starting DB schema setup..."
+
+          # Execute SQL scripts in order
+          psql -v ON_ERROR_STOP=1 --host app-postgres --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /app-db-scripts/01_customers.sql
+          psql -v ON_ERROR_STOP=1 --host app-postgres --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /app-db-scripts/02_products.sql
+          psql -v ON_ERROR_STOP=1 --host app-postgres --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /app-db-scripts/03_inventory.sql
+          psql -v ON_ERROR_STOP=1 --host app-postgres --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /app-db-scripts/04_orders.sql
+          psql -v ON_ERROR_STOP=1 --host app-postgres --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /app-db-scripts/05_order_details.sql
+
+          echo "App DB schema setup completed."
+        resources: # Add resource limits for the init job as well
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "300m"
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: user
+        - name: POSTGRES_DB
+          value: "web_shop"
+        - name: PGPASSWORD # Added for psql authentication
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: password
+        volumeMounts:
+        - name: app-db-scripts-volume
+          mountPath: /app-db-scripts
+      volumes:
+      - name: app-db-scripts-volume
+        configMap:
+          name: app-db-init-scripts
+          defaultMode: 0744

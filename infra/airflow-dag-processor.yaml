@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airflow-dag-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airflow-dag-processor
+  template:
+    metadata:
+      labels:
+        app: airflow-dag-processor
+    spec:
+      securityContext:
+        fsGroup: 0
+      initContainers:
+      - name: airflow-init
+        image: webshop-airflow-custom:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - "/bin/bash"
+        - "-c"
+        - |
+          mkdir -p /opt/airflow/{logs,dags,plugins,config}
+        volumeMounts:
+        - name: airflow-dags
+          mountPath: /opt/airflow/dags
+        - name: airflow-logs
+          mountPath: /opt/airflow/logs
+        - name: airflow-config-pvc
+          mountPath: /opt/airflow/config
+        - name: airflow-plugins
+          mountPath: /opt/airflow/plugins
+      containers:
+      - name: airflow-dag-processor
+        image: webshop-airflow-custom:latest
+        imagePullPolicy: IfNotPresent
+        command: ["airflow", "dag-processor"]
+        envFrom:
+        - configMapRef:
+            name: airflow-config
+        env:
+        - name: WEB_SHOP_DB_HOST
+          value: "app-postgres"
+        - name: WEB_SHOP_DB_NAME
+          value: "web_shop"
+        - name: WEB_SHOP_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: user
+        - name: WEB_SHOP_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: password
+        - name: ANALYTICS_DB_HOST
+          value: "analytics-db"
+        - name: ANALYTICS_DB_NAME
+          value: "web_shop_analytics"
+        - name: ANALYTICS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: user
+        - name: ANALYTICS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: password
+        volumeMounts:
+        - name: airflow-dags
+          mountPath: /opt/airflow/dags
+        - name: airflow-logs
+          mountPath: /opt/airflow/logs
+        - name: airflow-config-pvc
+          mountPath: /opt/airflow/config
+        - name: airflow-plugins
+          mountPath: /opt/airflow/plugins
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1.5Gi"
+            cpu: "1000m"
+
+      volumes:
+      - name: airflow-dags
+        persistentVolumeClaim:
+          claimName: airflow-dags
+      - name: airflow-logs
+        persistentVolumeClaim:
+          claimName: airflow-logs
+      - name: airflow-config-pvc
+        persistentVolumeClaim:
+          claimName: airflow-config-pvc
+      - name: airflow-plugins
+        persistentVolumeClaim:
+          claimName: airflow-plugins
+

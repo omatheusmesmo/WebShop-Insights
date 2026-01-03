@@ -1,0 +1,76 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: analytics-db-fdw-init-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: analytics-db-fdw-init-job # Add a label for easier selection
+    spec:
+      restartPolicy: OnFailure
+      initContainers:
+      - name: wait-for-analytics-db
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ['sh', '-c', 'until nc -z analytics-db 5432; do echo waiting for analytics-db; sleep 5; done;']
+      containers:
+      - name: fdw-setup-runner
+        image: postgres:16 # Use a postgres client image
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          echo "analytics-db is ready. Starting FDW setup..."
+
+          # Execute 01_fdw_setup.sql
+          psql -v ON_ERROR_STOP=1 --host analytics-db --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /fdw-scripts/01_fdw_setup.sql
+          
+          # Execute 02_fdw_setup.sh - this requires WEB_SHOP_DB_PASSWORD
+          /fdw-scripts/02_fdw_setup.sh
+
+          # Execute 03_fdw_setup.sql
+          psql -v ON_ERROR_STOP=1 --host analytics-db --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /fdw-scripts/03_fdw_setup.sql
+
+          # Execute 04_financial_summary.sql
+          psql -v ON_ERROR_STOP=1 --host analytics-db --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /fdw-scripts/04_financial_summary.sql
+
+          # Execute 05_order_subtotals.sql
+          psql -v ON_ERROR_STOP=1 --host analytics-db --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /fdw-scripts/05_order_subtotals.sql
+
+          # Execute 06_product_performance.sql
+          psql -v ON_ERROR_STOP=1 --host analytics-db --port 5432 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} -f /fdw-scripts/06_product_performance.sql
+
+          echo "FDW and analytics tables setup completed."
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "300m"
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: user
+        - name: POSTGRES_DB
+          value: "web_shop_analytics"
+        - name: PGPASSWORD # Added for psql authentication
+          valueFrom:
+            secretKeyRef:
+              name: analytics-db-secret
+              key: password
+        - name: WEB_SHOP_DB_PASSWORD # Required by 02_fdw_setup.sh
+          valueFrom:
+            secretKeyRef:
+              name: app-postgres-secret
+              key: password
+        volumeMounts:
+        - name: fdw-scripts-volume
+          mountPath: /fdw-scripts
+      volumes: # Add volume for FDW scripts
+      - name: fdw-scripts-volume
+        configMap: # Use a configMap to store the FDW scripts
+          name: analytics-fdw-scripts
+          defaultMode: 0744 # Set default permissions for mounted files
