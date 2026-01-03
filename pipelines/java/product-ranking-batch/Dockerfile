@@ -18,4 +18,6 @@ RUN mvn package -DskipTests
 # ------------------------------------
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-# ... (restante do runtime)
+
+# Copia o JAR construído no estágio anterior para a imagem final.
+COPY --from=build /app/target/product-ranking-batch-0.0.1-SNAPSHOT.jar /app/product-ranking-batch-0.0.1-SNAPSHOT.jar
