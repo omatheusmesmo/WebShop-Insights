@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -86,7 +87,7 @@ public class ProductRankingBatchConfig {
                 .sql(ORDER_ITEMS_QUERY)
                 .rowMapper(new OrderItemRowMapper())
                 .fetchSize(1000)
-                .queryArguments(highWaterMarkDate)
+                .preparedStatementSetter(ps -> ps.setDate(1, java.sql.Date.valueOf(highWaterMarkDate)))
                 .build();
     }
 
