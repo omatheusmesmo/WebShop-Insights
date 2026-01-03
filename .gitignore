@@ -1,1 +1,5 @@
 /.venv/
+
+# Directory for build/sync state markers
+infra/.state/
+/config/
