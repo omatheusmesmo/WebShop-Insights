@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from db_connections import MultiDBConnector
+from .db_connections import MultiDBConnector
 
 CALCULATION_DATE = datetime.now()
 TARGET_TABLE = 'financial_summary'
