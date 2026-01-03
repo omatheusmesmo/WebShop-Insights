@@ -1,7 +1,7 @@
 import pandas as pd
 # Removed unnecessary SQLAlchemy import, as pandas handles it internally with the engine.
 from datetime import datetime
-from db_connections import MultiDBConnector
+from .db_connections import MultiDBConnector
 
 # Define the current execution timestamp
 CALCULATION_DATE = datetime.now()
@@ -21,9 +21,13 @@ def get_high_water_mark(target_engine):
     try:
         df_mark = pd.read_sql(high_water_mark_query, target_engine)
 
-        max_id = df_mark['max_id'].iloc[0]
-
-        high_water_mark = int(max_id) if pd.notna(max_id) else 0
+        # Check if the DataFrame is empty before trying to access iloc[0]
+        if not df_mark.empty and pd.notna(df_mark['max_id'].iloc[0]):
+            max_id = df_mark['max_id'].iloc[0]
+            high_water_mark = int(max_id)
+        else:
+            print("INFO: Target table is empty or MAX(order_id) is NULL. Starting load from 0.")
+            high_water_mark = 0
 
         print(f"INFO: High Water Mark (MAX Order ID processed): {high_water_mark}")
         return high_water_mark
