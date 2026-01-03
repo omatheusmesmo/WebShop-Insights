@@ -4,18 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="chore: initial setup">
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="fix: increase phone number field length in customers table">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WebShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WebShop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/customers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/01_customers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/inventory.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/03_inventory.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/order_details.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/05_order_details.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/orders.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/04_orders.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop/webshop_sql/products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop/webshop_sql/02_products.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop_analytics/fdw_setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/01_fdw_setup.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop_analytics/financial_summary.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/04_financial_summary.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop_analytics/order_subtotals.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/05_order_subtotals.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webshop_analytics/product_performance.sql" beforeDir="false" afterPath="$PROJECT_DIR$/webshop_analytics/06_product_performance.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/java/br/com/analytics/pipeline/product_ranking_batch/config/ProductRankingBatchConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/java/product-ranking-batch/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/python/order_subtotals.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/python/order_subtotals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/python/pipeline_financial_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/python/financial_metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webshop/insert_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/python/insert_webshop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Dockerfile" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -45,6 +50,9 @@
     &quot;accountId&quot;: &quot;7de4e7f4-442d-47ed-a154-3cec94dc6b0f&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -53,40 +61,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.product-ranking-batch/Dockerfile.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.db_connections.executor": "Run",
-    "Python.insert_script.executor": "Run",
-    "Python.order_subtotals.executor": "Run",
-    "Python.pipeline_financial_metrics.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/media/omatheusmesmo/FileShare/projects/python/WebShop/webshop_analytics",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.docker-compose.yml.analytics-db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.product-ranking-batch/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.db_connections.executor&quot;: &quot;Run&quot;,
+    &quot;Python.insert_script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.order_subtotals.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pipeline_financial_metrics.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/mnt/fileshare/projects/python/WebShop/dags&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dags" />
       <recent name="$PROJECT_DIR$/webshop_analytics" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/webshop_sql" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pipelines/python" />
       <recent name="$PROJECT_DIR$/webshop" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Docker.docker-compose.yml.analytics-db: Compose Deployment">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.analytics-db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="analytics-db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="product-ranking-batch/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
@@ -99,6 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml.analytics-db: Compose Deployment" />
         <item itemvalue="Docker.product-ranking-batch/Dockerfile" />
       </list>
     </recent_temporary>
@@ -106,7 +137,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-53e2683a6804-9cdd278e9d02-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26094.141" />
+        <option value="bundled-python-sdk-7bb8055f9097-cbfc7b97e6b2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.28238.29" />
       </set>
     </attachedChunks>
   </component>
@@ -222,8 +253,35 @@
       <option name="project" value="LOCAL" />
       <updated>1764275436660</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix: update foreign data wrapper setup and adjust sales velocity score precision">
+      <option name="closed" value="true" />
+      <created>1767474907997</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1767474907997</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix: increase phone number field length in customers table">
+      <option name="closed" value="true" />
+      <created>1767474918715</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1767474918715</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="conf: project setup" />
@@ -239,6 +297,27 @@
     <MESSAGE value="feat: pipeline to calculate financial metrics" />
     <MESSAGE value="feat: sql script of product performance table" />
     <MESSAGE value="chore: initial setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: initial setup" />
+    <MESSAGE value="fix: update foreign data wrapper setup and adjust sales velocity score precision" />
+    <MESSAGE value="fix: increase phone number field length in customers table" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: increase phone number field length in customers table" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dags/dag_financial_metrics_etl.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
