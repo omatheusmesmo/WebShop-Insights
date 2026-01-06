@@ -80,11 +80,11 @@ spec:
           mountPath: /opt/airflow/plugins
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "200m"
+            memory: "1Gi"
+            cpu: "500m"
           limits:
-            memory: "1.5Gi"
-            cpu: "1000m"
+            memory: "3Gi"
+            cpu: "2000m"
 
       volumes:
       - name: airflow-dags

@@ -81,11 +81,11 @@ spec:
 
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "200m"
-          limits:
-            memory: "1.5Gi"
+            memory: "1Gi"
             cpu: "1000m"
+          limits:
+            memory: "3Gi"
+            cpu: "2000m"
 
         readinessProbe:
           httpGet:
