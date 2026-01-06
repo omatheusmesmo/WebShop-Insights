@@ -60,6 +60,9 @@ echo "Finished pre-pulling common Kubernetes images."
 # --- 2. Apply DNS fix in Minikube VM ---
 echo "Applying DNS fix in Minikube VM (to prevent 'server misbehaving')..."
 minikube ssh "echo \"nameserver $DNS_NAMESERVER\" | sudo tee /etc/resolv.conf > /dev/null"
+echo "Restarting Docker inside Minikube to apply DNS changes..."
+minikube ssh "sudo systemctl restart docker"
+sleep 5
 
 # --- 3. Build Custom Docker Images inside Minikube (Smartly) ---
 # Check if Airflow image needs rebuild by checking for its existence in minikube and file changes
