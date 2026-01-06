@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation" />
+    <list default="true" id="d501a96e-e376-43a4-a809-8dee9b692c54" name="Changes" comment="fix: update workspace configuration and enhance error handling in order_subtotals.py">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dags/dag_data_population.py" beforeDir="false" afterPath="$PROJECT_DIR$/dags/dag_data_population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dags/dag_financial_metrics_etl.py" beforeDir="false" afterPath="$PROJECT_DIR$/dags/dag_financial_metrics_etl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dags/dag_order_subtotals_etl.py" beforeDir="false" afterPath="$PROJECT_DIR$/dags/dag_order_subtotals_etl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dags/dag_ranking_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/dags/dag_ranking_batch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/airflow-apiserver.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/airflow-apiserver.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/airflow-dag-processor.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/airflow-dag-processor.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/airflow-postgres.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/airflow-postgres.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/airflow-scheduler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/airflow-scheduler.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/up_infra.sh" beforeDir="false" afterPath="$PROJECT_DIR$/up_infra.sh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +41,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/omatheusmesmo/WebShop-Insights.git&quot;,
-    &quot;accountId&quot;: &quot;7de4e7f4-442d-47ed-a154-3cec94dc6b0f&quot;
+    &quot;accountId&quot;: &quot;79f0b9c6-fee9-4c7c-a774-dab62940968e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -332,7 +343,63 @@
       <option name="project" value="LOCAL" />
       <updated>1767476041580</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: add Kubernetes manifests for Airflow setup including services, deployments, and config maps">
+      <option name="closed" value="true" />
+      <created>1767476095075</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476095075</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: add new ETL DAGs for data population, financial metrics, and order subtotals">
+      <option name="closed" value="true" />
+      <created>1767476112834</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476112834</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat: add product ranking batch DAG with KubernetesPodOperator for Java application">
+      <option name="closed" value="true" />
+      <created>1767476119591</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476119591</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat: add Dockerfile for Airflow setup with dependency installation">
+      <option name="closed" value="true" />
+      <created>1767476127051</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476127051</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat: add requirements.txt for project dependencies including faker, pandas, and numpy">
+      <option name="closed" value="true" />
+      <created>1767476139441</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476139441</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat: add up_infra.sh for automated Airflow infrastructure setup on Minikube">
+      <option name="closed" value="true" />
+      <created>1767476147380</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476147380</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fix: update workspace configuration and enhance error handling in order_subtotals.py">
+      <option name="closed" value="true" />
+      <created>1767476180132</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1767476180132</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -347,13 +414,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="conf: project setup" />
-    <MESSAGE value="feat: Script for populating a database with random data" />
-    <MESSAGE value="feat: scripts for create tables for webshop" />
-    <MESSAGE value="refactor: move files to webshop directory" />
-    <MESSAGE value="feat: script for create metrics tables" />
-    <MESSAGE value="refactor: change in the type of period stored" />
-    <MESSAGE value="feat: table to store order subtotals" />
     <MESSAGE value="feat: fdw setup to simplify data aggregation" />
     <MESSAGE value="feat: centralize db connections and engines" />
     <MESSAGE value="feat: pipeline to calculate order subtotals" />
@@ -372,15 +432,22 @@
     <MESSAGE value="fix: rename pipeline_financial_metrics.py to financial_metrics.py and update import statement" />
     <MESSAGE value="fix: rename insert_script.py to insert_webshop.py and enhance logging and error handling" />
     <MESSAGE value="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: update order_subtotals.py to improve error handling and logging for high water mark calculation" />
+    <MESSAGE value="feat: add Kubernetes manifests for Airflow setup including services, deployments, and config maps" />
+    <MESSAGE value="feat: add new ETL DAGs for data population, financial metrics, and order subtotals" />
+    <MESSAGE value="feat: add product ranking batch DAG with KubernetesPodOperator for Java application" />
+    <MESSAGE value="feat: add Dockerfile for Airflow setup with dependency installation" />
+    <MESSAGE value="feat: add requirements.txt for project dependencies including faker, pandas, and numpy" />
+    <MESSAGE value="feat: add up_infra.sh for automated Airflow infrastructure setup on Minikube" />
+    <MESSAGE value="fix: update workspace configuration and enhance error handling in order_subtotals.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: update workspace configuration and enhance error handling in order_subtotals.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/dags/dag_financial_metrics_etl.py</url>
+          <url>file://$PROJECT_DIR$/dags/dag_ranking_batch.py</url>
           <line>1</line>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
